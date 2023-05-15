@@ -10,7 +10,7 @@ temp <- c(-1.1, -1.2, 1, 5.6, 10.8, 14.7, 16.8, 16.2, 13, 8.5, 4.5, 1.4)
 temp <- matrix(temp, nrow = n_runs, ncol = length(temp), byrow = TRUE)
 
 # Litter input for each run
-litter <- matrix(rep(0, len = n_runs * 4), nrow = n_runs)
+litter <- matrix(rep(0, len = n_runs * 5), nrow = n_runs)
 
 # Woody size for each run
 wsize <- rep(0, 4)

@@ -26,31 +26,35 @@ test_that("Simulated carbon is correct for calibration", {
   expect_equal(simulated_out, real_out, tolerance = 1e-4)
 })
 
-test_that("Steady state predictions are correct", {
-
-  # Expected output
-  real_out <- as.matrix(structure(c(
-    62.9975581347448, 71.7491909991854, 80.500823863626,
-    89.2524567280666, 6.95824142758275, 7.95622030996732, 8.95419919235189,
-    9.95217807473646, 25.6575789594938, 28.4730058325039, 31.2884327055141,
-    34.1038595785242, 299.547585467295, 329.938996687453, 360.330407907612,
-    390.72181912777, 406.312700833162, 459.969829898441, 513.62695896372,
-    567.284088028999), .Dim = 4:5))
-
-  # Simulated output
-  simulated_out <- calibrate_yasso(
-    par = sample_parameters,
-    n_runs = sample_data_cal$n_runs,
-    time = sample_data_cal$time,
-    temp = sample_data_cal$temp,
-    prec = sample_data_cal$prec,
-    init = sample_data_cal$init,
-    litter = sample_data_cal$litter + matrix(1:16, nrow = 4),
-    wsize = sample_data_cal$wsize,
-    leac = sample_data_cal$leac,
-    sspred = 1L
-  )
-
-  # Compare
-  expect_equal(simulated_out, real_out, tolerance = 1e-4)
-})
+# Commenting out this steady state test as it is not constructed as intended.
+# Should only be run for a single time step, and initial state should not impact
+# the steady state output.
+#
+# test_that("Steady state predictions are correct", {
+#
+#   # Expected output
+#   real_out <- as.matrix(structure(c(
+#     62.9975581347448, 71.7491909991854, 80.500823863626,
+#     89.2524567280666, 6.95824142758275, 7.95622030996732, 8.95419919235189,
+#     9.95217807473646, 25.6575789594938, 28.4730058325039, 31.2884327055141,
+#     34.1038595785242, 299.547585467295, 329.938996687453, 360.330407907612,
+#     390.72181912777, 406.312700833162, 459.969829898441, 513.62695896372,
+#     567.284088028999), .Dim = 4:5))
+#
+#   # Simulated output
+#   simulated_out <- calibrate_yasso(
+#     par = sample_parameters,
+#     n_runs = sample_data_cal$n_runs,
+#     time = sample_data_cal$time,
+#     temp = sample_data_cal$temp,
+#     prec = sample_data_cal$prec,
+#     init = sample_data_cal$init,
+#     litter = sample_data_cal$litter + matrix(1:20, nrow = 4),
+#     wsize = sample_data_cal$wsize,
+#     leac = sample_data_cal$leac,
+#     sspred = 1L
+#   )
+#
+#   # Compare
+#   expect_equal(simulated_out, real_out, tolerance = 1e-4)
+# })
